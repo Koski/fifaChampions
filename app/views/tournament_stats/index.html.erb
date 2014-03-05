@@ -1,0 +1,31 @@
+<h1>Listing tournament_stats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Tournament</th>
+      <th>Standing</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tournament_stats.each do |tournament_stat| %>
+      <tr>
+        <td><%= tournament_stat.user_id %></td>
+        <td><%= tournament_stat.tournament_id %></td>
+        <td><%= tournament_stat.standing %></td>
+        <td><%= link_to 'Show', tournament_stat %></td>
+        <td><%= link_to 'Edit', edit_tournament_stat_path(tournament_stat) %></td>
+        <td><%= link_to 'Destroy', tournament_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tournament stat', new_tournament_stat_path %>

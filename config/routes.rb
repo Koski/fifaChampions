@@ -1,4 +1,10 @@
 FifaChampions::Application.routes.draw do
+  resources :teams
+
+  resources :tournament_stats
+
+  resources :tournaments
+
   devise_for :users
   resources :users
   root "users#index"

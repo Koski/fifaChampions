@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tournament_stat.user_id %>
+</p>
+
+<p>
+  <strong>Tournament:</strong>
+  <%= @tournament_stat.tournament_id %>
+</p>
+
+<p>
+  <strong>Standing:</strong>
+  <%= @tournament_stat.standing %>
+</p>
+
+<%= link_to 'Edit', edit_tournament_stat_path(@tournament_stat) %> |
+<%= link_to 'Back', tournament_stats_path %>
