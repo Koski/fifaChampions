@@ -10,18 +10,18 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <form>
-      Number of Participants<br>
-      <input type="number" name="participants">
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+  
+  <p>Number of participants:
+    <select id="participantAmount" value="1"></select>
+  </p>
+  
+
+  <div id="participantInputs"></div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
