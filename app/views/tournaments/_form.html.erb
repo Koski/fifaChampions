@@ -1,3 +1,8 @@
+<%= javascript_tag do %>
+  window.usersURL = '<%= j users_url %>';
+  window.users = <%= raw @users.to_json %>
+<% end %>
+
 <%= form_for(@tournament) do |f| %>
   <% if @tournament.errors.any? %>
     <div id="error_explanation">
@@ -15,6 +20,8 @@
     <%= f.text_field :name %>
   </div>
   
+
+
   <p>Number of participants:
     <select id="participantAmount" value="1"></select>
   </p>

@@ -16,35 +16,35 @@
 //= require_tree .
 $(document).ready(function() {
 
-  $(function() {
-    var participants = document.getElementById("participantAmount");
-    for (var i = 1; i <= 8; i++) {
-    	var option = document.createElement("option");
-    	option.text = i;
-    	option.value = i;
-    	participants.appendChild(option);
-    };
+    $(function() {
+        var participants = document.getElementById("participantAmount");
+        for (var i = 1; i <= 8; i++) {
+            var option = document.createElement("option");
+            option.text = i;
+            option.value = i;
+            participants.appendChild(option);
+        };
+        console.log(users[0].username)
+    });
 
-  });
+    $('#participantAmount').change(function() {
+        var participants = $(this).val();
+        addFields(participants);
+    });
 
-$('#participantAmount').change(function() {
-    var participants = $(this).val();
-    addFields(participants);
-});
-
-function addFields(num) {
-	var participantInputs = document.getElementById("participantInputs");
-	participantInputs.innerHTML = '';
-	for (var i = 1; i <= num; i++) {
-		participantInputs.innerHTML += i + ". "
-		var inputUser = document.createElement("select");
-		var inputTeam = document.createElement("select");
-		inputUser.appendChild(document.createElement("option"));
-		inputTeam.appendChild(document.createElement("option"));
-    	participantInputs.appendChild(inputUser);
-    	participantInputs.appendChild(inputTeam);
-    	participantInputs.appendChild(document.createElement("br"));
-    }
-}
+    function addFields(num) {
+       var participantInputs = document.getElementById("participantInputs");
+       participantInputs.innerHTML = '';
+       for (var i = 1; i <= num; i++) {
+          participantInputs.innerHTML += i + ". "
+          var inputUser = document.createElement("select");
+          var inputTeam = document.createElement("select");
+          inputUser.appendChild(document.createElement("option"));
+          inputTeam.appendChild(document.createElement("option"));
+          participantInputs.appendChild(inputUser);
+          participantInputs.appendChild(inputTeam);
+          participantInputs.appendChild(document.createElement("br"));
+      }
+  }
 
 });
