@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tournament.name %>
-</p>
+
+<h2><%= @tournament.name %></h2>
+
+<table>
+	<thead>
+		<th></th>
+		<th>User</th>
+		<th>Team</th>
+	</thead>
+	<tbody>
+		<%@tournament.tournament_stats.each do |s|%>
+			<tr>
+				<td><%= s.standing %>.</td>
+				<td><%= s.user.username%></td>
+				<td><%= s.team.name %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
 <%= link_to 'Edit', edit_tournament_path(@tournament) %> |
 <%= link_to 'Back', tournaments_path %>

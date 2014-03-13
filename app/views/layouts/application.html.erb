@@ -9,10 +9,14 @@
 <body>
 	<div class="navibar">
 		<%= link_to 'Home', root_path %>
+		<%= link_to 'Add Tournament', new_tournament_path %>
+		<%= link_to 'Add Team', new_team_path %>
+		<%= link_to 'View Tournaments', tournaments_path %>
+		<%= link_to 'Users', users_path %> 
 		<% if user_signed_in? %>
-			<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+			| <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 		<% else %>
-			<%= link_to 'Add Tournament', new_tournament_path %>
+			
 			<%= link_to 'Sign up', new_user_registration_path %>
 			<%= link_to 'Login', new_user_session_path %>
 		<% end %>

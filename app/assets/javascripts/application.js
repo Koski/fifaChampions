@@ -14,37 +14,68 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).ready(function() {
 
-    $(function() {
-        var participants = document.getElementById("participantAmount");
-        for (var i = 1; i <= 8; i++) {
-            var option = document.createElement("option");
-            option.text = i;
-            option.value = i;
-            participants.appendChild(option);
-        };
-        console.log(users[0].username)
-    });
 
-    $('#participantAmount').change(function() {
-        var participants = $(this).val();
-        addFields(participants);
-    });
+$(document).on('page:load', ready);
+$(document).ready(ready);
 
-    function addFields(num) {
-       var participantInputs = document.getElementById("participantInputs");
-       participantInputs.innerHTML = '';
-       for (var i = 1; i <= num; i++) {
-          participantInputs.innerHTML += i + ". "
-          var inputUser = document.createElement("select");
-          var inputTeam = document.createElement("select");
-          inputUser.appendChild(document.createElement("option"));
-          inputTeam.appendChild(document.createElement("option"));
-          participantInputs.appendChild(inputUser);
-          participantInputs.appendChild(inputTeam);
-          participantInputs.appendChild(document.createElement("br"));
-      }
-  }
+function ready() {
 
-});
+  var participants = document.getElementById("participantAmount");
+  for (var i = 0; i <= 8; i++) {
+    var option = document.createElement("option");
+    option.text = i;
+    option.value = i;
+    participants.appendChild(option);
+  };
+
+  $('#participantAmount').change(function() {
+    var participants = $(this).val();
+    addFields(participants);
+  });
+
+
+}
+
+function addFields(num) {
+     var participantInputs = document.getElementById("participantInputs");
+     participantInputs.innerHTML = '';
+     for (var i = 1; i <= num; i++) {
+        participantInputs.innerHTML += i + ". ";
+        
+        var inputUser = document.createElement("select");
+        inputUser.name = "stats[tournament_stats_" + i +"][user_id]";
+        var inputTeam = document.createElement("select");
+        inputTeam.name = "stats[tournament_stats_"+ i +"][team_id]";
+
+        addUsers(inputUser);
+        addTeams(inputTeam);
+        var standing = document.createElement("input");
+        standing.name = "stats[tournament_stats_"+ i +"][standing]";
+        standing.setAttribute("type", "hidden");
+        standing.value = i;
+        participantInputs.appendChild(standing);
+        participantInputs.appendChild(inputUser);
+        participantInputs.appendChild(inputTeam);
+        participantInputs.appendChild(document.createElement("br"));
+    }
+}
+
+function addTeams(inputTeam) {
+  for (var i = 0; i < teams.length; i++) {
+    var option = document.createElement("option");
+    option.text = teams[i].name;
+    option.value = teams[i].id;
+    inputTeam.appendChild(option);
+  };
+}
+
+function addUsers(inputUser) {
+  for (var i = 0; i < users.length; i++) {
+    var option = document.createElement("option");
+    option.text = users[i].username;
+    option.value = users[i].id;
+    inputUser.appendChild(option);
+  };
+}
+

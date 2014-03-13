@@ -1,4 +1,6 @@
 FifaChampions::Application.routes.draw do
+  resources :players
+
   resources :teams
 
   resources :tournament_stats
@@ -7,7 +9,7 @@ FifaChampions::Application.routes.draw do
 
   devise_for :users
   resources :users
-  root "users#index"
+  root "tournaments#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
