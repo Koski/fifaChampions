@@ -1,9 +1,3 @@
-<%= javascript_tag do %>
-  window.usersURL = '<%= j users_url %>';
-  window.users = <%= raw @users.to_json %>
-  window.teams = <%= raw @teams.to_json %>
-<% end %>
-
 <%= form_for(@tournament) do |f| %>
   <% if @tournament.errors.any? %>
     <div id="error_explanation">
@@ -21,9 +15,15 @@
     <%= f.text_field :name %>
   </div>
 
-  <p>Number of participants:
-    <select id="participantAmount" value="1"></select>
+  <p>Number of participants:  
+    <%= select_tag('participantAmount',options_from_collection_for_select(1..10, :to_s, :to_s))%>
   </p>
+
+  <script id="inputTemplate" type="text/html">
+    <%= select_tag('tournament[tournament_stats_attributes][][user_id]',options_from_collection_for_select(@users, :id, :username)) %>
+    <%= select_tag('tournament[tournament_stats_attributes][][team_id]',options_from_collection_for_select(@teams, :id, :name))%>
+    <br>
+  </script>
   
   <!-- <select name="tournament[tournament_stats][team_id]">
     <option value="3">

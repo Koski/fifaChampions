@@ -15,6 +15,7 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    @teams = Team.all
   end
 
   # GET /players/1/edit
@@ -24,10 +25,12 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.json
   def create
+    #render text: player_params
     @player = Player.new(player_params)
 
     respond_to do |format|
       if @player.save
+
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render action: 'show', status: :created, location: @player }
       else
@@ -69,6 +72,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :number)
+      params.require(:player).permit(:name, :number, team_ids:[])
     end
 end

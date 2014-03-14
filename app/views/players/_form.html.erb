@@ -19,6 +19,11 @@
     <%= f.label :number %><br>
     <%= f.number_field :number %>
   </div>
+  <h4>Enlisted in:</h4>
+  <div>
+    <%= collection_select(:player, :team_ids, @teams, :id, :name, {}, { :multiple => true } )%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

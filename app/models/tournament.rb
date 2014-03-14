@@ -3,5 +3,6 @@ class Tournament < ActiveRecord::Base
 	has_many :users, through: :tournament_stats
 
 	validates :name, uniqueness: true, length: {minimum: 3, maximum: 15}
-
+	
+	accepts_nested_attributes_for :tournament_stats
 end
