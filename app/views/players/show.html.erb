@@ -1,14 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h2>
+	<%= @player.name %>
+	<footer># <%= @player.number %></footer>
+</h2>
 <p>
-  <strong>Name:</strong>
-  <%= @player.name %>
+	Plays for
+	<% @player.teams.each do |t| %>
+		<li><%= t.name %></li>
+	<% end %>
 </p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @player.number %>
-</p>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |
 <%= link_to 'Back', players_path %>
