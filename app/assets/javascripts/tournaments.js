@@ -1,5 +1,6 @@
 
 $(document).ready(ready);
+
 function ready() {
 	$('#participantAmount').change(addFields);
 	addFields()
@@ -11,6 +12,5 @@ function ready() {
 			participantInputs.append(i+'.'+template)
 		}
 	}
-
 }
 

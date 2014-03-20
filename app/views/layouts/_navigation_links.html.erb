@@ -1,13 +1,6 @@
 <%# add navigation links to this file %>
 
 <li><%= link_to 'Home', root_path %></li>
-<li><%= link_to 'Add Tournament', new_tournament_path %></li>
-<li><%= link_to 'Add Team', new_team_path %></li>
-<li><%= link_to 'Add Player', new_player_path %></li>
-<li><%= link_to 'View Tournaments', tournaments_path %></li>
-<li><%= link_to 'View Players', players_path %></li>
-<li><%= link_to 'View Teams', teams_path %></li>
-<li><%= link_to 'Users', users_path %> </li>
 <% if user_signed_in? %>
 	<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 <% else %>
