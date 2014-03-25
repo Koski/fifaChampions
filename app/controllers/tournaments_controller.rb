@@ -7,6 +7,11 @@ class TournamentsController < ApplicationController
     @tournaments = Tournament.all
   end
 
+  def statistics
+    @winners = TournamentStat.users_by_wins(5)
+    @recent_winner = TournamentStat.most_recent_winner
+  end
+
   # GET /tournaments/1
   # GET /tournaments/1.json
   def show
@@ -26,7 +31,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments
   # POST /tournaments.json
   def create
-    # render text: params
+     # render text: params
     @tournament = Tournament.new(tournament_params)
 
     respond_to do |format|
@@ -38,7 +43,7 @@ class TournamentsController < ApplicationController
         format.json { render json: @tournament.errors, status: :unprocessable_entity }
       end
     end
-  end
+   end
 
   # PATCH/PUT /tournaments/1
   # PATCH/PUT /tournaments/1.json

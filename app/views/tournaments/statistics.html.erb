@@ -1,0 +1,24 @@
+<h1>Statistics</h1>
+
+<div class = "row">
+	<div class = "col-md-2">
+		<h4>Top 5 with most wins</h4>
+		<table class = "table table-hover">
+			<thead>
+				<th>Name</th>
+				<th>Wins</th>
+			</thead>
+			<tbody>
+				<% @winners.each do |user| %>
+				<tr>
+					<td><%= user.username %></td>
+					<td><%= user.number_of_wins %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>
+	Most recent winner (Undisputed Champion): <%= link_to @recent_winner.username, @recent_winner %>
+</p>

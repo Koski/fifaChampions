@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 	has_many :tournaments, through: :tournament_stats
 	validates :username, uniqueness: true, length: {minimum: 3, maximum: 15}
 
+	def number_of_wins
+		tournament_stats.all.select{|t| t.standing == 1}.count
+	end
+	
 end

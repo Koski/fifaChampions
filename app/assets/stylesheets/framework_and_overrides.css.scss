@@ -30,6 +30,9 @@ img {
   @extend .btn-primary;
   @extend .btn-lg;
   }
+.btn {
+  margin-top: 8px;
+}
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
@@ -39,6 +42,7 @@ main {
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
+
 section {
   @extend .row;
   margin-top: 20px;
