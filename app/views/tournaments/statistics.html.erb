@@ -20,5 +20,8 @@
 	</div>
 </div>
 <p>
-	Most recent winner (Undisputed Champion): <%= link_to @recent_winner.username, @recent_winner %>
+	Most recent winner (Undisputed Champion): 
+	<%unless @recent_winner.nil? %>
+		<%= link_to @recent_winner.username, @recent_winner %>
+	<%end%>
 </p>

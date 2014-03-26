@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
 		tournament_stats.all.select{|t| t.standing == 1}.count
 	end
 	
+	def number_of_losses(id)
+
+		tournament_stats.loser_stats#.select{|s| s.user_id==id}.count
+	end
+
 end

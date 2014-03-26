@@ -1,5 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: [:show, :edit, :update, :destroy]
+  before_action :set_tournaments_and_users, only: [:new, :edit, :update]
 
   # GET /tournaments
   # GET /tournaments.json
@@ -10,6 +11,7 @@ class TournamentsController < ApplicationController
   def statistics
     @winners = TournamentStat.users_by_wins(5)
     @recent_winner = TournamentStat.most_recent_winner
+    @losers = TournamentStat.users_by_losses
   end
 
   # GET /tournaments/1
@@ -73,6 +75,11 @@ class TournamentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tournament
       @tournament = Tournament.find(params[:id])
+    end
+
+    def set_tournaments_and_users
+      @users = User.all
+      @teams = Team.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
