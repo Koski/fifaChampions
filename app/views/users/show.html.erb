@@ -1,11 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class = "row">
 
-<h2><%= @user.username %></h2>
+	<div class = "col-md-2">
+		<h2><%= @user.username %></h2>
+		<%= image_tag @user.avatar.url(:medium) %>
+		<strong>Words to live by</strong>
+		<p>
+			<i><%= @user.motto %></i>
+		</p>
+	</div>
+</div>
 
-<p>
-  <strong>Motto:</strong>
-  <i><%= @user.motto %></i>
-</p>
+<br><br>
 
+<h4>Tournament stats</h4>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="row">
+	<div class="col-md-2">
+		<table class="table table-hover">
+			<thead>
+					<th>Wins</th>
+					<th>Second places</th>
+					<th>Third places</th>
+					<th>Losses</th>
+					<th>Win Ratio</th>
+					<th>Tournaments played</th>			
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= @user.number_of_wins %></td>
+					<td><%= @user.number_of_standings(2) %></td>
+					<td><%= @user.number_of_standings(3) %></td>
+					<td><%= @user.number_of_losses %></td>
+					<td><%= @user.win_ratio[1].round(2) %></td>
+					<td><%= @user.number_of_tournaments %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>
+
+<%= link_to 'Edit', edit_user_path(@user) %> 

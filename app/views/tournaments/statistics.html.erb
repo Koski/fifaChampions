@@ -1,23 +1,45 @@
 <h1>Statistics</h1>
 
+
 <div class = "row">
+	
 	<div class = "col-md-2">
-		<h4>Top 5 with most wins</h4>
+		<h4>Top 5 Winners</h4>
+		<%= render 'top5_table', users: @winners, state:'Wins', method: :number_of_wins %>
+	</div>
+
+	
+	<div class = "col-md-2">
+		<h4>Top 5 Losers</h4>
+		<%= render 'top5_table', users: @losers, state:'Losses', method: :number_of_losses %>
+	</div>
+
+	
+	<div class = "col-md-2">
+		<h4>Top 5 Win ratio</h4>
 		<table class = "table table-hover">
 			<thead>
+				<th></th>
 				<th>Name</th>
-				<th>Wins</th>
+				<th>Win ratio</th>
 			</thead>
 			<tbody>
-				<% @winners.each do |user| %>
+				<% @winners_by_ratio.each do |user| %>
 				<tr>
-					<td><%= user.username %></td>
-					<td><%= user.number_of_wins %></td>
+					<td><%= image_tag user[0].avatar.url(:thumb) %></td>
+					<td><%= link_to user[0].username, user[0] %></td>
+					<td><%= user[1].round(2) %></td>
 				</tr>
 				<% end %>
 			</tbody>
 		</table>
 	</div>
+
+	<div class = "col-md-2">
+		<h4>Top 5 active users</h4>
+		<%= render 'top5_table', users: @users_by_played, state: 'Played', method: :number_of_tournaments %>
+	</div>
+
 </div>
 <p>
 	Most recent winner (Undisputed Champion): 

@@ -20,6 +20,9 @@ group :development do
   gem 'rails_layout'
 end
 
+#picture upload
+gem "paperclip", "~> 4.1"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

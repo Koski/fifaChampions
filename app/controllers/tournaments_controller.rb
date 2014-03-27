@@ -11,7 +11,9 @@ class TournamentsController < ApplicationController
   def statistics
     @winners = TournamentStat.users_by_wins(5)
     @recent_winner = TournamentStat.most_recent_winner
-    @losers = TournamentStat.users_by_losses
+    @losers = TournamentStat.users_by_losses(5)
+    @users_by_played = TournamentStat.users_by_tours_played(5)
+    @winners_by_ratio = User.users_by_win_ratio(5)
   end
 
   # GET /tournaments/1
