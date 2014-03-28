@@ -20,6 +20,7 @@ img {
   }
 .form {
   @extend .col-md-6;
+
   }
 .form-centered {
   @extend .col-md-6;
@@ -32,6 +33,7 @@ img {
   }
 .btn {
   margin-top: 8px;
+
 }
 // apply styles to HTML elements
 // to make views framework-neutral
@@ -42,7 +44,9 @@ main {
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
-
+.glyphicon-home {
+    font-size: 2em;
+}
 section {
   @extend .row;
   margin-top: 20px;

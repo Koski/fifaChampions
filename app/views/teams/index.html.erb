@@ -1,26 +1,29 @@
-<h1>Listing teams</h1>
+<div class = "col-md-3">
 
-<table class= "table table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1>Teams</h1>
 
-  <tbody>
-    <% @teams.each do |team| %>
+  <table class= "table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to team.name, team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= link_to team.name, team %></td>
+          <td><%= link_to '', edit_team_path(team), class: "glyphicon glyphicon-pencil" %></td>
+          <td><%= link_to '', team, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %> 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+ 
+    <%= link_to 'New Team', new_team_path, class: 'btn btn-primary' %>
 
-<%= link_to 'New Team', new_team_path %>
+  
+</div>
+

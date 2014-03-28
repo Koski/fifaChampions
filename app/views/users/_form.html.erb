@@ -20,9 +20,13 @@
     <%= f.text_field :motto %>
   </div>
 
-  <%= f.file_field :avatar %>
+  <strong>Profile pic</strong>
 
-  <div class="actions">
+  <div class = "field">
+    <%= f.file_field :avatar %>
+  </div>
+  
+  <div class="field">
     <%= f.submit %>
   </div>
 <% end %>

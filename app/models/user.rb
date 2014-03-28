@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
 	def number_of_standings(n)
 		self.tournament_stats.where(standing: n).count
-		#tournament_stats.all.select{|t| t.standing == 1}.count ## oli ennen näin. rumaa :p
 	end
+
 	def number_of_wins
 		number_of_standings(1)
 	end
@@ -25,18 +25,22 @@ class User < ActiveRecord::Base
 	end
 
 	def win_ratio
-		return [self,0] if tournament_stats.count == 0 
-		[self, number_of_standings(1) / tournament_stats.count.to_f]
+		return 0.0 if tournament_stats.count == 0
+		(number_of_standings(1) / tournament_stats.count.to_f).round(2)
 	end
 
 	def self.users_by_win_ratio(n)
-		User.all.map(&:win_ratio).sort {|a,b| b[1] <=> a[1] }[0..n]
+		users_by(:win_ratio,n)
 	end
 
-
+	def self.users_by(id,n)
+		User.all.sort {|a,b| b.send(id) <=> a.send(id)}.take(n)
+	end
 
 	def number_of_tournaments
 		tournament_stats.count
 	end
-
+	def self.alphabetically
+		User.all.sort_by(&:username)
+	end
 end

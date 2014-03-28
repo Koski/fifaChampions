@@ -1,22 +1,27 @@
+<div class = "col-md-3">
 
-<h2><%= @tournament.name %></h2>
 
-<table class= "table table-hover">
-	<thead>
-		<th></th>
-		<th>User</th>
-		<th>Team</th>
-	</thead>
-	<tbody>
-		<%@tournament.tournament_stats.each do |s|%>
-			<tr>
-				<td><%= s.standing %>.</td>
-				<td><%= s.user.username%></td>
-				<td><%= s.team.name %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+	<h2><%= @tournament.name %></h2>
 
-<%= link_to 'Edit', edit_tournament_path(@tournament) %> |
-<%= link_to 'Back', tournaments_path %>
+	<table class= "table table-hover">
+		<thead>
+			<th></th>
+			<th>User</th>
+			<th>Team</th>
+		</thead>
+		<tbody>
+			<%@tournament.tournament_stats.each do |s|%>
+				<tr>
+					<td><%= s.standing %>.</td>
+					<td><%= s.user.username%></td>
+					<td><%= s.team.name %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class = "btn btn-warning">
+		<%= link_to 'Edit', edit_tournament_path(@tournament) %>
+	</div>
+	
+
+</div>

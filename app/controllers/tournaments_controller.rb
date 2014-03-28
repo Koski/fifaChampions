@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   before_action :set_tournament, only: [:show, :edit, :update, :destroy]
-  before_action :set_tournaments_and_users, only: [:new, :edit, :update]
+  before_action :set_teams_and_users, only: [:new, :edit, :update, :create]
 
   # GET /tournaments
   # GET /tournaments.json
@@ -9,11 +9,11 @@ class TournamentsController < ApplicationController
   end
 
   def statistics
-    @winners = TournamentStat.users_by_wins(5)
+    @winners = User.users_by(:number_of_wins,5)
     @recent_winner = TournamentStat.most_recent_winner
-    @losers = TournamentStat.users_by_losses(5)
-    @users_by_played = TournamentStat.users_by_tours_played(5)
-    @winners_by_ratio = User.users_by_win_ratio(5)
+    @losers = User.users_by(:number_of_losses, 5)
+    @users_by_played = User.users_by(:number_of_tournaments,5)
+    @winners_by_ratio = User.users_by(:win_ratio, 5)
   end
 
   # GET /tournaments/1
@@ -24,8 +24,6 @@ class TournamentsController < ApplicationController
   # GET /tournaments/new
   def new
     @tournament = Tournament.new
-    @users = User.all
-    @teams = Team.all
   end
 
   # GET /tournaments/1/edit
@@ -35,8 +33,10 @@ class TournamentsController < ApplicationController
   # POST /tournaments
   # POST /tournaments.json
   def create
-     # render text: params
+      
     @tournament = Tournament.new(tournament_params)
+    #raise if validate_tournament_stats(tournament_params)
+    
 
     respond_to do |format|
       if @tournament.save
@@ -79,13 +79,17 @@ class TournamentsController < ApplicationController
       @tournament = Tournament.find(params[:id])
     end
 
-    def set_tournaments_and_users
-      @users = User.all
+    def set_teams_and_users
+      @users = User.alphabetically
       @teams = Team.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
       params.require(:tournament).permit(:name, :user_id, :team_id, tournament_stats_attributes:[ :standing, :user_id, :team_id ])
+    end
+
+    def validate_tournament_stats(stats)
+      stats.to_a.uniq?
     end
 end

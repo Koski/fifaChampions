@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     # render text: user_params
     respond_to do |format|
-      if @user.update(user_params)
+      if current_user == @user && @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

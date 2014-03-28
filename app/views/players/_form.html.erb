@@ -1,3 +1,8 @@
+<div class = "row">
+  <div class = "col-xs-12 col-sm-8 col-md-4 ">
+
+
+
 <%= form_for(@player) do |f| %>
   <% if @player.errors.any? %>
     <div id="error_explanation">
@@ -20,11 +25,14 @@
     <%= f.number_field :number %>
   </div>
   <h4>Enlisted in:</h4>
-  <div>
-    <%= collection_select(:player, :team_ids, @teams, :id, :name, {}, { :multiple => true } )%>
+
+  <div class= "field">
+    <%= collection_select(:player, :team_ids, @teams, :id, :name, {}, { :multiple => true, class: "form-control team_drop_down" }) %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+  </div>
+</div>

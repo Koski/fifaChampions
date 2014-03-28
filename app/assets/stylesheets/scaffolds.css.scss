@@ -1,17 +1,14 @@
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  background-color: #DDD;
 }
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
-
+.team_drop_down {
+  height: 8em !important;
+}
 pre {
   background-color: #eee;
   padding: 10px;
@@ -19,13 +16,14 @@ pre {
 }
 
 a {
+
   color: #000;
   &:visited {
-    color: #666;
+    color: #000;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #888888;
+    text-decoration:none;
   }
 }
 

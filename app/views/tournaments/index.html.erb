@@ -1,24 +1,28 @@
-<h1>All tournaments</h1>
 
-<table class= "table table-hover">
-  <thead >
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @tournaments.each do |tournament| %>
+<div class = "col-md-3">
+  <h1>All tournaments</h1>
+
+  <table class= "table table-hover">
+    <thead >
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tournaments.each do |tournament| %>
       <tr>
         <td><%= link_to tournament.name, tournament %></td>
-        <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-        <td><%= link_to 'Destroy', tournament, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '', edit_tournament_path(tournament), class: "glyphicon glyphicon-pencil" %></td>
+        <td><%= link_to '', tournament, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
 
+</div>
