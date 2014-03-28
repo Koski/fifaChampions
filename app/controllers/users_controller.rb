@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show_image
     @user = User.find(params[:id])
-    send_data @user.raw_file, type: @user.mime_type, disposition: 'inline'
+    send_data @user.raw_file, content_type: @user.mime_type , disposition: 'inline'
   end
 
   # GET /users/new
