@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328151207) do
+ActiveRecord::Schema.define(version: 20140328152739) do
 
   create_table "contracts", force: true do |t|
     t.integer  "player_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20140328151207) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.binary   "raw_file"
+    t.string   "mime_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

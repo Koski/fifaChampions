@@ -2,7 +2,7 @@
 
 	<div class = "col-md-2">
 		<h2><%= @user.username %></h2>
-		<%= image_tag @user.avatar.url(:medium) %>
+		<%= image_tag url_for(controller: 'users', action: 'show_image', id: @user.id) %>
 		<strong>Words to live by</strong>
 		<p>
 			<i><%= @user.motto %></i>

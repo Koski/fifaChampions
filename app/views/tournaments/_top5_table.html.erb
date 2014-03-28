@@ -9,7 +9,8 @@
 	<tbody>
 		<% users.each do |user| %>
 			<tr>
-				<td><%= image_tag user.avatar.url(:thumb) %></td>
+				<td><%= image_tag url_for(controller: 'users', action: 'show_image', id: user.id) %></td>
+				
 				<td><%= link_to user.username, user %></td>
 				<td><%= user.send(method) %></td>
 			</tr>

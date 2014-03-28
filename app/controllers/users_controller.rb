@@ -12,6 +12,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def show_image
+    @user = User.find(params[:id])
+    send_data @user.raw_file, type: @user.mime_type, disposition: 'inline'
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -44,6 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if current_user == @user && @user.update(user_params)
         @user.raw_file = params[:user][:avatar].read
+        @user.mime_type = params[:user][:avatar].content_type
         @user.save
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }

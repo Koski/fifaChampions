@@ -17,26 +17,26 @@
       </ul>
 
       <div class = "navbar-right">
-   
+       
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          Add <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <%= render 'layouts/navigation_links_for_add' %>
-        </ul>
-      </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Add <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <%= render 'layouts/navigation_links_for_add' %>
+          </ul>
+        </div>
 
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-          View <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <%= render 'layouts/navigation_links_for_view' %>
-        </ul>
-      </div>
-           <% if current_user%>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            View <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <%= render 'layouts/navigation_links_for_view' %>
+          </ul>
+        </div>
+        <% if current_user%>
         <div class="btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             <%=current_user.username%> <span class="glyphicon glyphicon-user"></span>
@@ -45,7 +45,7 @@
             <%= render 'layouts/navigation_links_for_user' %>
           </ul>
         </div>
-      <%end%>
+        <%end%>
       </div>
     </div>
   </div>
