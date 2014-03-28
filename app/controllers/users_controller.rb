@@ -43,6 +43,8 @@ class UsersController < ApplicationController
     # render text: user_params
     respond_to do |format|
       if current_user == @user && @user.update(user_params)
+        @user.raw_file = params[:user][:avatar].read
+        @user.save
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else
