@@ -14,6 +14,7 @@ class TournamentsController < ApplicationController
     @losers = User.users_by(:number_of_losses, 5)
     @users_by_played = User.users_by(:number_of_tournaments,5)
     @winners_by_ratio = User.users_by(:win_ratio, 5)
+    @users_by_point_ratio = User.users_by(:point_ratio, 5)
   end
 
   # GET /tournaments/1
@@ -33,7 +34,7 @@ class TournamentsController < ApplicationController
   # POST /tournaments
   # POST /tournaments.json
   def create
-      
+    # render text: params
     @tournament = Tournament.new(tournament_params)
     #raise if validate_tournament_stats(tournament_params)
     
@@ -86,7 +87,7 @@ class TournamentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_params
-      params.require(:tournament).permit(:name, :user_id, :team_id, tournament_stats_attributes:[ :standing, :user_id, :team_id ])
+      params.require(:tournament).permit(:name, :user_id, :team_id, tournament_stats_attributes:[ :standing, :user_id, :team_id, :points ])
     end
 
     def validate_tournament_stats(stats)

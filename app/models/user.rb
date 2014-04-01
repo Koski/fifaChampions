@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
 	def win_ratio
 		return 0.0 if tournament_stats.count == 0
-		(number_of_standings(1) / tournament_stats.count.to_f).round(2)
+		(number_of_standings(1) / tournament_stats.count.to_f)*100
 	end
 
 	def self.users_by_win_ratio(n)
@@ -34,12 +34,23 @@ class User < ActiveRecord::Base
 	end
 
 	def self.users_by(id,n)
-		User.all.sort {|a,b| b.send(id) <=> a.send(id)}.take(n)
+		User.all.sort { |a,b| b.send(id) <=> a.send(id) }.take(n)
 	end
 
 	def number_of_tournaments
 		tournament_stats.count
 	end
+
+	def point_ratio
+		return 0.0 if tournament_stats.count == 0
+		ratio = 0.to_f
+		tournament_stats.each do |s|
+			available = (s.tournament.tournament_stats.count * 3)
+			ratio += s.points / available.to_f
+		end
+		return (ratio/tournament_stats.count).round(2) *100
+	end
+
 	def self.alphabetically
 		User.all.sort_by(&:username)
 	end

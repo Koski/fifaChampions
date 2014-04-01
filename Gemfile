@@ -7,6 +7,8 @@ gem 'rails', '4.0.2'
 group :development, :test do
 	gem 'sqlite3'
 	gem 'byebug'
+	gem 'rspec-rails', '~> 2.14.1'
+	gem 'factory_girl_rails'
 end
 
 group :production do

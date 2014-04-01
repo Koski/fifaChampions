@@ -1,5 +1,3 @@
-
-
 <table class = "table table-hover table-bordered">
 	<thead>
 		<th></th>
@@ -12,10 +10,12 @@
 				<td><%= image_tag url_for(controller: 'users', action: 'show_image', id: user.id) %></td>
 				
 				<td><%= link_to user.username, user %></td>
-				<td><%= user.send(method) %></td>
+				<% if defined? percentage and percentage %>
+					<td><%= number_to_percentage(user.send(method), precision: 2, significant: true) %></td>
+				<% else %>
+					<td><%= user.send(method) %></td>
+				<% end %>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-
-

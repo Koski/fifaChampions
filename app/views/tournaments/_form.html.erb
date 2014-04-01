@@ -20,8 +20,12 @@
   </p>
 
   <script id="inputTemplate" type="text/html">
+    User:
     <%= select_tag('tournament[tournament_stats_attributes][][user_id]',options_from_collection_for_select(@users, :id, :username)) %>
+    Team:
     <%= select_tag('tournament[tournament_stats_attributes][][team_id]',options_from_collection_for_select(@teams, :id, :name))%>
+    Points:
+    <%= number_field_tag 'tournament[tournament_stats_attributes][][points]', :points %>
     <br>
   </script>
   

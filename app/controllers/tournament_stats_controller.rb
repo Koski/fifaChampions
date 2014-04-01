@@ -24,6 +24,7 @@ class TournamentStatsController < ApplicationController
   # POST /tournament_stats
   # POST /tournament_stats.json
   def create
+    # render text: params
     @tournament_stat = TournamentStat.new(tournament_stat_params)
 
     respond_to do |format|
@@ -69,6 +70,6 @@ class TournamentStatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tournament_stat_params
-      params.require(:tournament_stat).permit(:user_id, :tournament_id, :standing, :team_id)
+      params.require(:tournament_stat).permit(:user_id, :tournament_id, :standing, :team_id, :points)
     end
 end

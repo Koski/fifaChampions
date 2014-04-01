@@ -19,16 +19,25 @@
 	</div>
 
 	<div class = "col-md-3">
-		<h4>Best win ratio</h4>
-		<%= render 'top5_table', users: @winners_by_ratio, state: 'Ratio', method: :win_ratio %>
-	</div>
-
-	<div class = "col-md-3">
 		<h4>Most active users</h4>
 		<%= render 'top5_table', users: @users_by_played, state: 'Played', method: :number_of_tournaments %>
 	</div>
 
 </div>
+<div class = "row">
+
+	<div class = "col-md-3">
+		<h4>Best win ratio</h4>
+		<%= render 'top5_table', users: @winners_by_ratio, state: 'Win Ratio', method: :win_ratio, percentage: true %>
+	</div>
+
+	<div class = "col-md-3">
+		<h4>Best point ratio</h4>
+		<%= render 'top5_table', users: @users_by_point_ratio, state: 'Point Ratio', method: :point_ratio, percentage: true %>
+	</div>
+
+</div>
+
 <div class = "row">
 	<div class = "col-md-12">
 		Most recent winner (Undisputed Champion): 

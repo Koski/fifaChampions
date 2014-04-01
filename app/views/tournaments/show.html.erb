@@ -1,13 +1,13 @@
 <div class = "col-md-3">
 
-
 	<h2><%= @tournament.name %></h2>
 
-	<table class= "table table-hover">
+	<table class= "table table-hover table-bordered">
 		<thead>
 			<th></th>
 			<th>User</th>
 			<th>Team</th>
+			<th>Points</th>
 		</thead>
 		<tbody>
 			<%@tournament.tournament_stats.each do |s|%>
@@ -15,6 +15,7 @@
 					<td><%= s.standing %>.</td>
 					<td><%= s.user.username%></td>
 					<td><%= s.team.name %></td>
+					<td><%= s.points %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -22,6 +23,5 @@
 	<div class = "btn btn-warning">
 		<%= link_to 'Edit', edit_tournament_path(@tournament) %>
 	</div>
-	
 
 </div>
