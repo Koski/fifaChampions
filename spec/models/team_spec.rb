@@ -13,7 +13,7 @@ describe Team do
 		expect(team).not_to be_valid
 	end
 	it "should not be valid with too long name" do
-		team = FactoryGirl.build(:team, name:"asdksjdurkjhiskjhgtjkjthjjjjj
+		team = FactoryGirl.build(:team, name:"	asdksjdurkjhiskjhgtjkjthjjjjj
 												asdksjdurkjhiskjhgtjkjthjjjjj
 												asdksjdurkjhiskjhgtjkjthjjjjj")
 
