@@ -1,34 +1,23 @@
 FactoryGirl.define do
 	factory :user do
-		id 1
-		username "Hessu"
+		sequence (:username) {|n| "HessuNr#{n}"}
+		sequence (:email) {|n| "hessu#{n}@kokkikoo.fi"}
 		password "kokkikartano"
-		email "hessu@kokkikoo.fi"
-	end	
+	end
 
 	factory :tournament do
-		name "kartano open"
+		sequence (:name) {|n| "TestTournis#{n}"}
 	end
 
 	factory :tournament_stat do
-		user_id 1
-		tournament_id 1
+		user
+		tournament
 		standing 1
-		team_id 1
-	end
-
-	factory :tour_stat, class: TournamentStat do
-		user_id 2
-		tournament_id 1
-		standing 2
-		team_id 2
+		team
 	end
 
 	factory :team do
-		name "Finland"
+		sequence (:name) {|n| "testName#{n}"}
 	end
 
-	factory :tournament_ramrod, class: Tournament do
-		name "Ramrod"
-	end
 end

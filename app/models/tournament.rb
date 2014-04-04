@@ -5,7 +5,7 @@ class Tournament < ActiveRecord::Base
 	validates :name, uniqueness: true, length: {minimum: 3, maximum: 15}
 	
 	accepts_nested_attributes_for :tournament_stats
-
+	
 	validate :check_duplicate_stats, on: :create
 
 	def check_duplicate_stats

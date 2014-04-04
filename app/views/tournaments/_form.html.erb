@@ -20,6 +20,7 @@
   </p>
 
   <script id="inputTemplate" type="text/html">
+  <div class="tournament_input">
     User:
     <%= select_tag('tournament[tournament_stats_attributes][][user_id]',options_from_collection_for_select(@users, :id, :username)) %>
     Team:
@@ -27,6 +28,7 @@
     Points:
     <%= number_field_tag 'tournament[tournament_stats_attributes][][points]', :points %>
     <br>
+  </div>
   </script>
   
   <div class= "field" id="participantInputs"></div>

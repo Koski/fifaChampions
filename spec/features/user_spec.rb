@@ -13,6 +13,16 @@ describe "user" do
 			expect(page).to have_content 'Signed in successfully'
 		end
 
+		it "can't sign in with wrong credentials" do
+			sign_in(username:"Hessu", password:"wrong")
+			expect(page).to have_content 'Invalid username or password.'
+		end
+
+		it "will be have previous form rendered upon unsuccesful login" do
+			sign_in(username:"Hessu", password:"wrong")
+			expect(page).to have_content 'Login'
+			find_field('user_username').value.should eq 'Hessu'
+		end
 	end
 
 end
