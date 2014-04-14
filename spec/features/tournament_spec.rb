@@ -13,7 +13,7 @@ describe "Tournament" do
 
 	    @user1 = FactoryGirl.create(:user)
 	    @user2 = FactoryGirl.create(:user, username:'Pauli', email:"pauli@paula.fi")
-	    @team1 = FactoryGirl.create(:team)
+	    @team1 = FactoryGirl.create(:team, name:"Finland")
 	    @team2 = FactoryGirl.create(:team, name:"Golden Futsal Team")
   	end
 
@@ -41,7 +41,8 @@ describe "Tournament" do
 		input.find('#tournament_tournament_stats_attributes__team_id').find(:xpath, 'option[2]').select_option
 		click_button('Create Tournament')
 		expect(page).to have_content 'Pauli Golden Futsal Team'
-		expect(page).to have_content 'Hessu Finland'
+		expect(page).to have_content 'Hessu' 
+		expect(page).to have_content 'Finland'
 	end
 
 	it "should not save with two identical stats", js:true do

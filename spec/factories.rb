@@ -20,4 +20,7 @@ FactoryGirl.define do
 		sequence (:name) {|n| "testName#{n}"}
 	end
 
+	factory :player do
+		sequence (:name) {|n| "playerNr#{n}"}
+	end
 end

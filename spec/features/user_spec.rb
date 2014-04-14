@@ -3,7 +3,7 @@ include OwnTestHelper
 
 describe "user" do
 
-	let!(:user) { FactoryGirl.create(:user) }
+	let!(:user) { FactoryGirl.create(:user, username: "Hessu") }
 
 	describe "who has signed up" do
 

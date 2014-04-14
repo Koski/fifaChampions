@@ -24,4 +24,12 @@ module OwnTestHelper
 		fill_in('tournament_name', with:params[:name])
 	end
 
+	def edit_player(params)
+		visit players_path
+		click_link(params[:player_name])
+		click_link('Edit')
+		fill_in('player_name', with:params[:new_name])
+		click_button('Update Player')
+	end
+
 end

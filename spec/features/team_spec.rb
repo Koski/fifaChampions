@@ -30,4 +30,6 @@ describe "Team" do
 		add_team(name:"kk")
 		find_field('team_name').value.should eq 'kk'
 	end
+
+	
 end
