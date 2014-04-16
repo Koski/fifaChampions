@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 		return 0.0 if tournament_stats.count == 0
 		ratio = 0.to_f
 		tournament_stats.each do |s|
-			available = (s.tournament.tournament_stats.count * 3)
+			available = ((s.tournament.tournament_stats.count-1) * 3)
 			ratio += s.points / available.to_f
 		end
 		return (ratio/tournament_stats.count).round(2) *100

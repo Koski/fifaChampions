@@ -14,6 +14,7 @@ FactoryGirl.define do
 		tournament
 		standing 1
 		team
+		points 0
 	end
 
 	factory :team do
