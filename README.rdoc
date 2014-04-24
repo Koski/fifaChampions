@@ -1,4 +1,4 @@
 Heroku: http://fifa-gods.herokuapp.com/
 
-[![Travis build status](https://travis-ci.org/Koski/fifaChampions.png?branch=master)](http://travis-ci.org/Koski/fifaChampions)
+[![Build Status](http://travis-ci.org/Koski/fifaChampions.png?branch=master)](http://travis-ci.org/Koski/fifaChampions)
 
