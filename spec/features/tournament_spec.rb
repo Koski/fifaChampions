@@ -53,4 +53,5 @@ describe "Tournament" do
 		expect(page).to have_content 'User has to be unique'
 	end
 
+
 end

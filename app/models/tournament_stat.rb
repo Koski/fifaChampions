@@ -1,4 +1,7 @@
 class TournamentStat < ActiveRecord::Base
+	
+	validates :points, presence: true, on: :create
+
 	belongs_to :user
 	belongs_to :tournament
 	belongs_to :team

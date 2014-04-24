@@ -32,4 +32,12 @@ module OwnTestHelper
 		click_button('Update Player')
 	end
 
+	def edit_team(params)
+		visit teams_path
+		click_link(params[:team_name])
+		click_link('Edit')
+		fill_in('team_name', with:params[:new_name])
+		click_button('Update Team')
+	end
+
 end
