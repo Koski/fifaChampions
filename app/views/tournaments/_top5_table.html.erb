@@ -8,7 +8,6 @@
 		<% users.each do |user| %>
 			<tr>
 				<td><%= image_tag url_for(controller: 'users', action: 'show_image', id: user.id) %></td>
-				
 				<td><%= link_to user.username, user %></td>
 				<% if defined? percentage and percentage %>
 					<td><%= number_to_percentage(user.send(method), precision: 2, significant: true) %></td>

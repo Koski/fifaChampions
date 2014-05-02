@@ -12,8 +12,9 @@
     <tbody>
       <% @users.each do |user| %>
       <tr>
-        <td> <%= link_to user.username, user %> <%= image_tag user.avatar.url(:thumb) %></td>
+        <td> <%= link_to user.username, user %> <%= image_tag url_for(controller: 'users', action: 'show_image', id: user.id) %></td>
       </tr>
+
       <% end %>
     </tbody>
   </table>
